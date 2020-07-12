@@ -24,10 +24,10 @@ public class Menu : MonoBehaviour
                 gameOverPanel.SetActive(false);
                 break;
             case "inGame":
-                _GameController.startCoroutinesInGame();
                 menuPanel.SetActive(false);
                 inGamePanel.SetActive(true);
                 gameOverPanel.SetActive(false);
+                _GameController.startCoroutinesInGame();
                 break;
             case "gameOver":
                 menuPanel.SetActive(false);

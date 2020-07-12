@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
         //PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
-        //StartCoroutine("unControlSide");
+
         StartCoroutine("textKeyCodeToChange");
 
         keyToUse = keyToChange[0];
@@ -69,6 +69,16 @@ public class GameController : MonoBehaviour
         StartCoroutine("spawnEnemyToLightSide");
 
         statusGame = true;
+    }
+
+    public void playerIsCreated()
+    {
+        if(GameObject.Find("PlayerA") != null && GameObject.Find("PlayerB") != null)
+        {
+            _PlayerA = GameObject.Find("PlayerA").GetComponent<Player>();
+            _PlayerB = GameObject.Find("PlayerB").GetComponent<Player>();
+            StartCoroutine("unControlSide");
+        }
     }
 
     public bool getStatusGame()
@@ -199,6 +209,8 @@ public class GameController : MonoBehaviour
 
         control = !control;
 
+        _PlayerA.control = control;
+        _PlayerB.control = !control;
 
         purifierControl(control);
         corrupterControl(!control);

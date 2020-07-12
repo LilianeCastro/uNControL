@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         playerRb = GetComponent<Rigidbody2D>();
         speedShot = 5f;
+
+        _GameController.playerIsCreated();
     }
 
     public void playerDied()
@@ -160,21 +162,6 @@ public class Player : MonoBehaviour
         }while(tempX == 0 && tempY ==0);
 
         return new Vector2(tempX * speedShot, tempY *speedShot);
-    }
-
-    IEnumerator getUncontrolSideInGameController()
-    {
-        yield return new WaitForSeconds(5f);
-        if(this.tag=="purifier")
-        {
-            //control = _GameController.getControl();
-        }
-        else
-        {
-            //control = !_GameController.getControl();
-        }
-        //control = _GameController.getUncontrolSide(this.tag);
-        StartCoroutine("getUncontrolSideInGameController");
     }
 
 }
