@@ -33,11 +33,6 @@ public class Player : MonoBehaviour
         _GameController.playerIsCreated();
     }
 
-    public void playerDied()
-    {
-        _GameController.setStatusEndGame();
-    }
-
     public void destroyedTheEnemyCalled(string enemyTag)
     {
         _GameController.setTotalTextInCanvas(enemyTag);

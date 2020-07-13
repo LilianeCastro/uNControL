@@ -35,23 +35,28 @@ public class GameController : MonoBehaviour
     public GameObject corrupterPrefab;
     public GameObject purifierPrefab;
 
-    [Header("Pos Spawn Purifier")]
+    [Header("Spawn Purifier")]
     public float minXPurifier;
     public float maxXPurifier;
+    public float speedPurifier;
 
-    [Header("Pos Spawn Corrupter")]
+    [Header("Spawn Corrupter")]
     public float minXCorrupter;
     public float maxXCorrupter;
+    public float speedCorrupter;
 
-    [Header("Pos Spawn In Arena")]
+    [Header("Spawn In Arena")]
     public float minYArena;
     public float maxYArena;
+    public int scoreToChangeSpeed;
+    public float increaseSpeedEnemy;
 
     private bool control = true;
     private KeyCode keyToUse;
 
     void Start() {
         _Menu = FindObjectOfType(typeof(Menu)) as Menu;
+        textKeyCodeToChange();
     }
 
     public void startCoroutinesInGame()
@@ -59,11 +64,7 @@ public class GameController : MonoBehaviour
         //PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
-
-        StartCoroutine("textKeyCodeToChange");
-
-        keyToUse = keyToChange[0];
-        changeTextKeyCodeToControl(keyToUse.ToString());
+        textKeyCodeToChange();
 
         StartCoroutine("spawnEnemyToDarkSide");
         StartCoroutine("spawnEnemyToLightSide");
@@ -96,6 +97,8 @@ public class GameController : MonoBehaviour
         updateScore();
         setStatusGame(false);
         changeScene("gameOver");
+
+        textKeyCodeToChange();
     }
 
     void updateScore()
@@ -159,6 +162,11 @@ public class GameController : MonoBehaviour
         _Menu.sceneToLoad(sceneName);
     }
 
+    public string getNameCurrentScene()
+    {
+        return _Menu.nameCurrentScene();
+    }
+
     public KeyCode keyToUseToChangeSide()
     {
         return keyToUse;
@@ -168,6 +176,14 @@ public class GameController : MonoBehaviour
     {
         textKeyCodeToChangeSide.color = Color.green;
         textKeyCodeToChangeSide.text = keyCodeToShow;
+    }
+
+    public void textKeyCodeToChange()
+    {
+        int posKey = Random.Range(0, keyToChange.Length);
+        keyToUse = keyToChange[posKey];
+
+        changeTextKeyCodeToControl(keyToUse.ToString());
     }
 
     public bool getUncontrolSide(string playerTag)
@@ -202,6 +218,17 @@ public class GameController : MonoBehaviour
         return corrupterCanControl;
     }
 
+    public float getSpeedPurifier()
+    {
+        return speedPurifier + (increaseSpeedEnemy * (Mathf.Floor(speedPurifier / scoreToChangeSpeed)));;
+    }
+
+    public float getSpeedCorrupter()
+    {
+
+        return speedCorrupter + (increaseSpeedEnemy * (Mathf.Floor(totalCorrupted / scoreToChangeSpeed)));
+    }
+
     IEnumerator unControlSide()
     {
         float timeToChangeControl = Random.Range(3, 10);
@@ -216,19 +243,6 @@ public class GameController : MonoBehaviour
         corrupterControl(!control);
 
         StartCoroutine("unControlSide");
-    }
-
-    IEnumerator textKeyCodeToChange()
-    {
-        float timeToChangeControl = Random.Range(3, 8);
-        yield return new WaitForSeconds(timeToChangeControl);
-
-        int posKey = Random.Range(0, keyToChange.Length);
-        keyToUse = keyToChange[posKey];
-
-        changeTextKeyCodeToControl(keyToUse.ToString());
-
-        StartCoroutine("textKeyCodeToChange");
     }
 
     IEnumerator spawnEnemyToDarkSide()

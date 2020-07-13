@@ -40,7 +40,6 @@ public class PlayerInput : MonoBehaviour
         {
             _Player.shot();
         }
-
     }
 
     public void changeControl()
