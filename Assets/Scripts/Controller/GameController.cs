@@ -105,12 +105,12 @@ public class GameController : MonoBehaviour
         {
             highscore = score;
             PlayerPrefs.SetInt("highscore", highscore);
-            gameOverHighscore.text = $"Hi-Score {PlayerPrefs.GetInt("highscore")}";
+            gameOverHighscore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
             updateHighScore();
         }
 
-        textHighScore.text = $"Hi-Score {PlayerPrefs.GetInt("highscore")}";
-        gameOverHighscore.text = $"Hi-Score {PlayerPrefs.GetInt("highscore")}";
+        textHighScore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
+        gameOverHighscore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
         gameOverScore.text = score.ToString();
     }
 
@@ -130,11 +130,11 @@ public class GameController : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("highscore") == 0)
         {
-            textHighScore.text = $"Hi-Score {0}";
+            textHighScore.text = $"Hi-Score: {0}";
         }
         else
         {
-            textHighScore.text = $"Hi-Score {PlayerPrefs.GetInt("highscore")}";
+            textHighScore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
         }
     }
 
@@ -266,7 +266,7 @@ public class GameController : MonoBehaviour
     private void spawnInX(float minX, float maxX, GameObject prefabToSpawn)
     {
         float posY = Random.Range(0, 2) == 0 ? minYArena : maxYArena;
-        Instantiate(prefabToSpawn, new Vector3(Random.Range(minX, maxX), posY), transform.rotation);
+        Instantiate(prefabToSpawn, new Vector3(Random.Range(minX, maxX), posY), _PlayerA.transform.rotation);
     }
 
     private void spawnInY(float minX, float maxX, GameObject prefabToSpawn)

@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour
 
     public float speed;
 
-
     void Start()
     {
         _Player = GameObject.Find(nameGameObjectPlayerToFollow).GetComponent<Player>();
@@ -22,6 +21,7 @@ public class Enemy : MonoBehaviour
         if(_Player != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, _Player.transform.position, speed * Time.deltaTime);
+            transform.up = _Player.transform.position - transform.position;
         }
     }
 

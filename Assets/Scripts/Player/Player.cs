@@ -140,7 +140,14 @@ public class Player : MonoBehaviour
     public void shot()
     {
         GameObject shotTemp = Instantiate(_GameController.shotPrefab, posLookAt.position, posLookAt.rotation);
-
+        if(gameObject.tag=="purifier")
+        {
+            shotTemp.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else
+        {
+            shotTemp.GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
         if(x == 0 && y == 0)
         {
             shotTemp.GetComponent<Rigidbody2D>().AddForce(vectorToRotate(), ForceMode2D.Impulse);
