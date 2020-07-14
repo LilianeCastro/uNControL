@@ -659,7 +659,7 @@ GameObject:
   - component: {fileID: 440691213}
   - component: {fileID: 440691212}
   - component: {fileID: 440691217}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerA
   m_TagString: corrupter
   m_Icon: {fileID: 0}
@@ -1555,7 +1555,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6241081b0a6dd0b4d938833b5543b7fa, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2460,6 +2460,7 @@ MonoBehaviour:
   menuPanel: {fileID: 1630202879}
   inGamePanel: {fileID: 442937750}
   gameOverPanel: {fileID: 2047064427}
+  tutorialPanel: {fileID: 0}
 --- !u!4 &1102670283
 Transform:
   m_ObjectHideFlags: 0
@@ -3020,7 +3021,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: a4a25488a6664d647815d2f83f5fe19f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6698113, g: 0.6698113, b: 0.6698113, a: 0.6745098}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4918,7 +4919,7 @@ GameObject:
   - component: {fileID: 2092582565}
   - component: {fileID: 2092582564}
   - component: {fileID: 2092582569}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerB
   m_TagString: purifier
   m_Icon: {fileID: 0}

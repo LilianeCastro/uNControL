@@ -38,6 +38,7 @@ public class PlayerInput : MonoBehaviour
 
         if(Input.GetButtonDown("Fire1") && _Player.control)
         {
+            _GameController.setFx(0);
             _Player.shot();
         }
     }

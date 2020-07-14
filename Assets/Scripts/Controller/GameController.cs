@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     private Player _PlayerA;
     private Player _PlayerB;
     private Menu _Menu;
+    private Sound _Sound;
 
     private bool purifierCanControl;
     private bool corrupterCanControl;
@@ -56,7 +57,10 @@ public class GameController : MonoBehaviour
 
     void Start() {
         _Menu = FindObjectOfType(typeof(Menu)) as Menu;
+        _Sound = FindObjectOfType(typeof(Sound)) as Sound;
+
         textKeyCodeToChange();
+        _Sound.changeSong("mainMenu");
     }
 
     public void startCoroutinesInGame()
@@ -186,6 +190,11 @@ public class GameController : MonoBehaviour
         changeTextKeyCodeToControl(keyToUse.ToString());
     }
 
+    public void setFx(int id)
+    {
+        _Sound.playFx(id);
+    }
+
     public bool getUncontrolSide(string playerTag)
     {
         if(playerTag=="purifier")
@@ -229,6 +238,31 @@ public class GameController : MonoBehaviour
         return speedCorrupter + (increaseSpeedEnemy * (Mathf.Floor(totalCorrupted / scoreToChangeSpeed)));
     }
 
+    private void spawnEnemy(float minX, float maxX, GameObject prefabToSpawn)
+    {
+        if(Random.Range(0, 100) > 50)
+        {
+            spawnInX(minX, maxX, prefabToSpawn);
+        }
+        else
+        {
+            spawnInY(minX, maxX, prefabToSpawn);
+        }
+    }
+
+    private void spawnInX(float minX, float maxX, GameObject prefabToSpawn)
+    {
+        float posY = Random.Range(0, 2) == 0 ? minYArena : maxYArena;
+        Instantiate(prefabToSpawn, new Vector3(Random.Range(minX, maxX), posY), _PlayerA.transform.rotation);
+    }
+
+    private void spawnInY(float minX, float maxX, GameObject prefabToSpawn)
+    {
+        float posX = Random.Range(0, 2) == 0 ? minX : maxX;
+        Instantiate(prefabToSpawn, new Vector3(posX, Random.Range(minYArena, maxYArena)), transform.rotation);
+    }
+
+
     IEnumerator unControlSide()
     {
         float timeToChangeControl = Random.Range(3, 10);
@@ -263,30 +297,6 @@ public class GameController : MonoBehaviour
             spawnEnemy(minXCorrupter, maxXCorrupter, corrupterPrefab);
             StartCoroutine("spawnEnemyToLightSide");
         }
-    }
-
-    private void spawnEnemy(float minX, float maxX, GameObject prefabToSpawn)
-    {
-        if(Random.Range(0, 100) > 50)
-        {
-            spawnInX(minX, maxX, prefabToSpawn);
-        }
-        else
-        {
-            spawnInY(minX, maxX, prefabToSpawn);
-        }
-    }
-
-    private void spawnInX(float minX, float maxX, GameObject prefabToSpawn)
-    {
-        float posY = Random.Range(0, 2) == 0 ? minYArena : maxYArena;
-        Instantiate(prefabToSpawn, new Vector3(Random.Range(minX, maxX), posY), _PlayerA.transform.rotation);
-    }
-
-    private void spawnInY(float minX, float maxX, GameObject prefabToSpawn)
-    {
-        float posX = Random.Range(0, 2) == 0 ? minX : maxX;
-        Instantiate(prefabToSpawn, new Vector3(posX, Random.Range(minYArena, maxYArena)), transform.rotation);
     }
 
 }

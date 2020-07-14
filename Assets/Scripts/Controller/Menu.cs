@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     private GameController _GameController;
+    private Sound _Sound;
+
     public GameObject menuPanel;
     public GameObject inGamePanel;
     public GameObject gameOverPanel;
@@ -14,6 +16,8 @@ public class Menu : MonoBehaviour
 
     private void Start() {
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
+        _Sound = FindObjectOfType(typeof(Sound)) as Sound;
+
         StartCoroutine("getKeyValue");
     }
 
@@ -41,6 +45,8 @@ public class Menu : MonoBehaviour
                 gameOverPanel.SetActive(true);
                 break;
         }
+
+        _Sound.changeSong(nameScene);
         SceneManager.LoadScene(nameScene);
     }
 
