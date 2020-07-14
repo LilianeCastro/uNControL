@@ -195,6 +195,11 @@ public class GameController : MonoBehaviour
         _Sound.playFx(id);
     }
 
+    public void setDeathFx()
+    {
+        _Sound.playDeathRandom();
+    }
+
     public bool getUncontrolSide(string playerTag)
     {
         if(playerTag=="purifier")

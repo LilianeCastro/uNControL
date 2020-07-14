@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
 
         if(other.CompareTag("shot"))
         {
+            _GameController.setDeathFx();
             _Player.destroyedTheEnemyCalled(this.tag);
             Destroy(this.gameObject);
         }

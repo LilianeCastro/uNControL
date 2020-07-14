@@ -1969,10 +1969,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 811272341}
   gameSound:
-  - {fileID: 8300000, guid: 6e5d62b1c36b3e242ae0ccd8e881c85d, type: 3}
-  - {fileID: 8300000, guid: ce841e39b49fda94fbba637f362c2a58, type: 3}
+  - {fileID: 8300000, guid: 5c52c05d13314f2458e2bc2812f64598, type: 3}
+  - {fileID: 8300000, guid: 14c49ce0c6c82d843a7f2d1740fae0d2, type: 3}
+  - {fileID: 8300000, guid: 07fca55728cce2346a399771a4f755e2, type: 3}
   fx:
   - {fileID: 8300000, guid: 95c1e36b2272fdc4aa2d509f6c9c44c7, type: 3}
+  - {fileID: 8300000, guid: 90b40fd0a49b00849bd213ab9d5ce6c8, type: 3}
+  fxDeath:
+  - {fileID: 8300000, guid: ec9dc9a9369861b41942927090f9f1a9, type: 3}
+  - {fileID: 8300000, guid: de9f84bdf6bd498448ccd0f3dfa632d9, type: 3}
+  - {fileID: 8300000, guid: 6721a4bc252de924d85c258a155c23ea, type: 3}
+  - {fileID: 8300000, guid: c6618135e0377374a92e49e32b3e6a2d, type: 3}
+  - {fileID: 8300000, guid: 9016a6b6c30aea045b6c7ed05080ddfd, type: 3}
+  - {fileID: 8300000, guid: 02a571ef1ee3c7e48bffd41f7df0c745, type: 3}
 --- !u!1 &845726801
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class Sound : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] gameSound;
     public AudioClip[] fx;
+    public AudioClip[] fxDeath;
 
     public void changeSong(string sceneName)
     {
@@ -23,12 +24,16 @@ public class Sound : MonoBehaviour
         {
             audioSource.Play();
         }
-
     }
 
     public void playFx(int idFx)
     {
         audioSource.PlayOneShot(fx[idFx]);
+    }
+
+    public void playDeathRandom()
+    {
+        audioSource.PlayOneShot(getRandomFx(fxDeath));
     }
 
     public float getAudioSourceVol()
@@ -39,6 +44,12 @@ public class Sound : MonoBehaviour
     public void setAudioSourceVol(float newVol)
     {
         audioSource.volume = newVol;
+    }
+
+    private AudioClip getRandomFx(AudioClip[] audioClip)
+    {
+        int random = Random.Range(0, audioClip.Length);
+        return audioClip[random];
     }
 
 }
