@@ -1149,9 +1149,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1135377291
-  m_SortingLayer: -1
-  m_SortingOrder: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: a4a25488a6664d647815d2f83f5fe19f, type: 3}
   m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_FlipX: 0
@@ -1212,7 +1212,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.125, y: 0.125}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1741,7 +1741,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 0.125, y: 0.125}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2283,6 +2283,7 @@ MonoBehaviour:
   menuPanel: {fileID: 1969256151}
   inGamePanel: {fileID: 313220019}
   gameOverPanel: {fileID: 881464077}
+  tutorialPanel: {fileID: 0}
 --- !u!1 &1090436633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3167,7 +3168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1595509309
 Transform:
   m_ObjectHideFlags: 0
@@ -3910,10 +3911,14 @@ MonoBehaviour:
     type: 3}
   minXPurifier: -8
   maxXPurifier: -0.4
+  speedPurifier: 0
   minXCorrupter: 0.4
   maxXCorrupter: 8
+  speedCorrupter: 0
   minYArena: -3.9
   maxYArena: 3.7
+  scoreToChangeSpeed: 0
+  increaseSpeedEnemy: 0
 --- !u!1 &2029405617
 GameObject:
   m_ObjectHideFlags: 0

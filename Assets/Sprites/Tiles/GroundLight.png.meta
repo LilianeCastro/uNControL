@@ -1,31 +1,7 @@
 fileFormatVersion: 2
-guid: 270502f2391126c46b28b415bc75eba4
+guid: 3f57f32a0b71f4a45ae5f1ecf70efe65
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 5376338103454419777
-    second: Tile9Slice01_0
-  - first:
-      213: -566749228742616920
-    second: Tile9Slice01_1
-  - first:
-      213: -3760279518703745578
-    second: Tile9Slice01_2
-  - first:
-      213: -5381463748905819188
-    second: Tile9Slice01_3
-  - first:
-      213: -7286535326522708252
-    second: Tile9Slice01_4
-  - first:
-      213: -4126079399733335278
-    second: Tile9Slice01_5
-  - first:
-      213: -3608729604858304243
-    second: Tile9Slice01_6
-  - first:
-      213: 5805055622884604222
-    second: Tile9Slice01_7
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -58,9 +34,9 @@ TextureImporter:
     filterMode: 0
     aniso: -1
     mipBias: -100
-    wrapU: 0
-    wrapV: 0
-    wrapW: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -69,8 +45,8 @@ TextureImporter:
   spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
-  spriteBorder: {x: 4, y: 4, z: 4, w: 4}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -133,28 +109,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Tile9Slice01_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 4, y: 4, z: 4, w: 4}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 14b4cc025079c9a40800000000000000
-      internalID: 5376338103454419777
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
