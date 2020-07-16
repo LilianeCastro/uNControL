@@ -12,9 +12,6 @@ public class GameController : MonoBehaviour
     private Menu _Menu;
     private Sound _Sound;
 
-    //private bool purifierCanControl;
-    //private bool corrupterCanControl;
-
     private bool statusGame;
     private int totalPurified;
     private int totalCorrupted;
@@ -214,26 +211,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    /*void purifierControl(bool state)
-    {
-        purifierCanControl = state;
-    }
-
-    public bool getPurifierCanControl()
-    {
-        return purifierCanControl;
-    }
-
-    void corrupterControl(bool state)
-    {
-        corrupterCanControl = state;
-    }
-
-    public bool getCorrupterControl()
-    {
-        return corrupterCanControl;
-    }*/
-
     public float getSpeedPurifier()
     {
         return speedPurifier + (increaseSpeedEnemy * (Mathf.Floor(speedPurifier / scoreToChangeSpeed)));;
@@ -279,9 +256,6 @@ public class GameController : MonoBehaviour
 
         _PlayerA.control = control;
         _PlayerB.control = !control;
-
-        //purifierControl(control);
-        //corrupterControl(!control);
 
         StartCoroutine("unControlSide");
     }

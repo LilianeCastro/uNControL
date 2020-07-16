@@ -150,25 +150,12 @@ public class Player : MonoBehaviour
         }
         if(x == 0 && y == 0)
         {
-            shotTemp.GetComponent<Rigidbody2D>().AddForce(vectorToRotate(), ForceMode2D.Impulse);
+            shotTemp.GetComponent<Rigidbody2D>().AddForce(Vector2.up * speedShot, ForceMode2D.Impulse);
         }
         else
         {
             shotTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * speedShot, y * speedShot), ForceMode2D.Impulse);
         }
-    }
-
-    private Vector2 vectorToRotate()
-    {
-        int tempX;
-        int tempY;
-
-        do{
-            tempX  = Random.Range(-1, 2);
-            tempY = Random.Range(-1, 2);
-        }while(tempX == 0 && tempY ==0);
-
-        return new Vector2(tempX * speedShot, tempY *speedShot);
     }
 
 }
