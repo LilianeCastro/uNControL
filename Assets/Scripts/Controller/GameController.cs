@@ -8,11 +8,12 @@ public class GameController : MonoBehaviour
 {
     private Player _PlayerA;
     private Player _PlayerB;
+
     private Menu _Menu;
     private Sound _Sound;
 
-    private bool purifierCanControl;
-    private bool corrupterCanControl;
+    //private bool purifierCanControl;
+    //private bool corrupterCanControl;
 
     private bool statusGame;
     private int totalPurified;
@@ -65,7 +66,7 @@ public class GameController : MonoBehaviour
 
     public void startCoroutinesInGame()
     {
-        //PlayerPrefs.SetInt("highscore", 0);
+        PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
         textKeyCodeToChange();
@@ -82,6 +83,7 @@ public class GameController : MonoBehaviour
         {
             _PlayerA = GameObject.Find("PlayerA").GetComponent<Player>();
             _PlayerB = GameObject.Find("PlayerB").GetComponent<Player>();
+
             StartCoroutine("unControlSide");
         }
     }
@@ -212,7 +214,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void purifierControl(bool state)
+    /*void purifierControl(bool state)
     {
         purifierCanControl = state;
     }
@@ -230,7 +232,7 @@ public class GameController : MonoBehaviour
     public bool getCorrupterControl()
     {
         return corrupterCanControl;
-    }
+    }*/
 
     public float getSpeedPurifier()
     {
@@ -278,8 +280,8 @@ public class GameController : MonoBehaviour
         _PlayerA.control = control;
         _PlayerB.control = !control;
 
-        purifierControl(control);
-        corrupterControl(!control);
+        //purifierControl(control);
+        //corrupterControl(!control);
 
         StartCoroutine("unControlSide");
     }

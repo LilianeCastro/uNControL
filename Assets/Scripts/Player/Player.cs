@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
     private GameController _GameController;
     private Rigidbody2D playerRb;
+    private Animator playerAnim;
 
     private float speed = 2f;
     private float posX;
@@ -27,7 +29,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         _GameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         playerRb = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<Animator>();
+
         speedShot = 5f;
 
         _GameController.playerIsCreated();
@@ -36,6 +41,11 @@ public class Player : MonoBehaviour
     public void destroyedTheEnemyCalled(string enemyTag)
     {
         _GameController.setTotalTextInCanvas(enemyTag);
+    }
+
+    public void arenaControl(bool status)
+    {
+        playerAnim.SetBool("isControl", status);
     }
 
     public void Move(Vector2 direction)
@@ -125,11 +135,6 @@ public class Player : MonoBehaviour
         }
 
         transform.rotation = Quaternion.Euler(transform.position.x, transform.position.y, rotateAngle);
-    }
-
-    public void setControl(bool stateControl)
-    {
-        control = stateControl;
     }
 
     public void shot()

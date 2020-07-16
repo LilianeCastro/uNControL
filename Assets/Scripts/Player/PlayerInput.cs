@@ -19,6 +19,8 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        _Player.arenaControl(_Player.control);
+
         if(_Player.control)
         {
             dirX = Input.GetAxisRaw("Horizontal");
