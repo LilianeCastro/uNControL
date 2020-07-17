@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController instance;
     private Player _PlayerA;
     private Player _PlayerB;
 
@@ -53,6 +54,10 @@ public class GameController : MonoBehaviour
     private bool control = true;
     private KeyCode keyToUse;
 
+    void Awake() {
+        instance = this;
+    }
+
     void Start() {
         _Menu = FindObjectOfType(typeof(Menu)) as Menu;
         _Sound = FindObjectOfType(typeof(Sound)) as Sound;
@@ -63,7 +68,7 @@ public class GameController : MonoBehaviour
 
     public void startCoroutinesInGame()
     {
-        PlayerPrefs.SetInt("highscore", 0);
+        //PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
         textKeyCodeToChange();

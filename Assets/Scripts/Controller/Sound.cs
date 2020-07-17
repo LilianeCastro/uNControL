@@ -12,13 +12,19 @@ public class Sound : MonoBehaviour
     public void changeSong(string sceneName)
     {
         audioSource.Stop();
-        if(sceneName.Equals("mainMenu") || sceneName.Equals("gameOver"))
+        if(sceneName.Equals("mainMenu"))
         {
             audioSource.clip = gameSound[0];
         }
         else if(sceneName.Equals("inGame"))
         {
+            playFx(1);
             audioSource.clip = gameSound[1];
+        }
+        else if(sceneName.Equals("gameOver"))
+        {
+            playFx(2);
+            audioSource.clip = gameSound[2];
         }
         if(audioSource.clip!=null)
         {

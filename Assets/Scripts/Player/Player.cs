@@ -40,7 +40,8 @@ public class Player : MonoBehaviour
 
     public void destroyedTheEnemyCalled(string enemyTag)
     {
-        _GameController.setTotalTextInCanvas(enemyTag);
+        GameController.instance.setTotalTextInCanvas(enemyTag);
+        //_GameController.setTotalTextInCanvas(enemyTag);
     }
 
     public void arenaControl(bool status)
