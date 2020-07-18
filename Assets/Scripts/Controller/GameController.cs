@@ -4,31 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GameController : MonoBehaviour
+public class GameController : MonoSingleton<GameController>
 {
-    public static GameController instance;
-    private Player _PlayerA;
-    private Player _PlayerB;
-
-    private Menu _Menu;
-    private Sound _Sound;
+    public Player _PlayerA;
+    public Player _PlayerB;
 
     private bool statusGame;
     private int totalPurified;
     private int totalCorrupted;
     private int score;
     private int highscore;
-
-    [Header("Canvas Config")]
-    public Text textKeyCodeToChangeSide;
     public KeyCode[] keyToChange;
-    public Text textTotalPurified;
-    public Text textTotalCorrupted;
-    public Text textHighScore;
-    public Text gameOverTotalPurified;
-    public Text gameOverTotalCorrupted;
-    public Text gameOverScore;
-    public Text gameOverHighscore;
 
     [Header("Prefabs")]
     public GameObject shotPrefab;
@@ -54,20 +40,17 @@ public class GameController : MonoBehaviour
     private bool control = true;
     private KeyCode keyToUse;
 
-    void Awake() {
-        instance = this;
-    }
+    public override void Init()
+    {
+        base.Init();
 
-    void Start() {
-        _Menu = FindObjectOfType(typeof(Menu)) as Menu;
-        _Sound = FindObjectOfType(typeof(Sound)) as Sound;
+        startCoroutinesInGame();
 
-        textKeyCodeToChange();
-        _Sound.changeSong("mainMenu");
     }
 
     public void startCoroutinesInGame()
     {
+        //HUD Sound? Clear Data?
         //PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
@@ -75,24 +58,9 @@ public class GameController : MonoBehaviour
 
         StartCoroutine("spawnEnemyToDarkSide");
         StartCoroutine("spawnEnemyToLightSide");
+        StartCoroutine("unControlSide");
 
         statusGame = true;
-    }
-
-    public void playerIsCreated()
-    {
-        if(GameObject.Find("PlayerA") != null && GameObject.Find("PlayerB") != null)
-        {
-            _PlayerA = GameObject.Find("PlayerA").GetComponent<Player>();
-            _PlayerB = GameObject.Find("PlayerB").GetComponent<Player>();
-
-            StartCoroutine("unControlSide");
-        }
-    }
-
-    public bool getStatusGame()
-    {
-        return statusGame;
     }
 
     public void setStatusGame(bool newStatus)
@@ -116,36 +84,35 @@ public class GameController : MonoBehaviour
         {
             highscore = score;
             PlayerPrefs.SetInt("highscore", highscore);
-            gameOverHighscore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
+            UIManager.Instance.setGameOverHighScore(highscore);
+
             updateHighScore();
         }
 
-        textHighScore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
-        gameOverHighscore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
-        gameOverScore.text = score.ToString();
+        UIManager.Instance.setHighScore(PlayerPrefs.GetInt("highscore"));
+        UIManager.Instance.setGameOverHighScore(PlayerPrefs.GetInt("highscore"));
+        UIManager.Instance.setGameOverScore(score);
+
+
     }
 
     public void zeroScore()
     {
         totalPurified = 0;
-        textTotalPurified.text = "0";
         totalCorrupted = 0;
-        textTotalCorrupted.text = "0";
-        gameOverTotalPurified.text = "0";
-        gameOverTotalCorrupted.text = "0";
-
         score = 0;
+
     }
 
      private void updateHighScore()
     {
         if(PlayerPrefs.GetInt("highscore") == 0)
         {
-            textHighScore.text = $"Hi-Score: {0}";
+            UIManager.Instance.setHighScore(0);
         }
         else
         {
-            textHighScore.text = $"Hi-Score: {PlayerPrefs.GetInt("highscore")}";
+            UIManager.Instance.setHighScore(PlayerPrefs.GetInt("highscore"));
         }
     }
 
@@ -154,25 +121,23 @@ public class GameController : MonoBehaviour
         if(nameEnemy.Equals("purifier"))
         {
             totalPurified += 1;
-            textTotalPurified.text = totalPurified.ToString();
-            gameOverTotalPurified.text = totalPurified.ToString();
+            UIManager.Instance.setTotalPurified(totalPurified);
         }
         else
         {
             totalCorrupted += 1;
-            textTotalCorrupted.text = totalCorrupted.ToString();
-            gameOverTotalCorrupted.text = totalCorrupted.ToString();
+            UIManager.Instance.setTotalCorrupted(totalCorrupted);
         }
     }
 
     public void changeScene(string sceneName)
     {
-        _Menu.sceneToLoad(sceneName);
+        Menu.Instance.sceneToLoad(sceneName);
     }
 
     public string getNameCurrentScene()
     {
-        return _Menu.nameCurrentScene();
+        return Menu.Instance.nameCurrentScene();
     }
 
     public KeyCode keyToUseToChangeSide()
@@ -180,28 +145,22 @@ public class GameController : MonoBehaviour
         return keyToUse;
     }
 
-    public void changeTextKeyCodeToControl(string keyCodeToShow)
-    {
-        textKeyCodeToChangeSide.color = Color.green;
-        textKeyCodeToChangeSide.text = keyCodeToShow;
-    }
-
     public void textKeyCodeToChange()
     {
         int posKey = Random.Range(0, keyToChange.Length);
         keyToUse = keyToChange[posKey];
 
-        changeTextKeyCodeToControl(keyToUse.ToString());
+        UIManager.Instance.setTextKeyCodeControl(keyToUse.ToString());
     }
 
     public void setFx(int id)
     {
-        _Sound.playFx(id);
+        Sound.Instance.playFx(id);
     }
 
     public void setDeathFx()
     {
-        _Sound.playDeathRandom();
+        Sound.Instance.playDeathRandom();
     }
 
     public bool getUncontrolSide(string playerTag)
@@ -242,7 +201,7 @@ public class GameController : MonoBehaviour
     private void spawnInX(float minX, float maxX, GameObject prefabToSpawn)
     {
         float posY = Random.Range(0, 2) == 0 ? minYArena : maxYArena;
-        Instantiate(prefabToSpawn, new Vector3(Random.Range(minX, maxX), posY), _PlayerA.transform.rotation);
+        Instantiate(prefabToSpawn, new Vector3(Random.Range(minX, maxX), posY), transform.rotation);
     }
 
     private void spawnInY(float minX, float maxX, GameObject prefabToSpawn)

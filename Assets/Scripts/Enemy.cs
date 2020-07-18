@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Player _Player;
-    private GameController _GameController;
 
     public string nameGameObjectPlayerToFollow;
     public string tagToCompare;
@@ -15,14 +14,14 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _Player = GameObject.Find(nameGameObjectPlayerToFollow).GetComponent<Player>();
-        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
+
         if(this.tag=="purifier")
         {
-            speed = _GameController.getSpeedPurifier();
+            speed = GameController.Instance.getSpeedPurifier();
         }
         else
         {
-            speed = _GameController.getSpeedCorrupter();
+            speed = GameController.Instance.getSpeedCorrupter();
         }
     }
 
@@ -39,12 +38,12 @@ public class Enemy : MonoBehaviour
 
         if(other.CompareTag(tagToCompare))
         {
-            _GameController.setStatusEndGame();
+            GameController.Instance.setStatusEndGame();
         }
 
         if(other.CompareTag("shot"))
         {
-            _GameController.setDeathFx();
+            GameController.Instance.setDeathFx();
             _Player.destroyedTheEnemyCalled(this.tag);
             Destroy(this.gameObject);
         }

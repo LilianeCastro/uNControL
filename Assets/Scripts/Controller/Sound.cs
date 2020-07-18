@@ -2,12 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sound : MonoBehaviour
+public class Sound : MonoSingleton<Sound>
 {
     public AudioSource audioSource;
     public AudioClip[] gameSound;
     public AudioClip[] fx;
     public AudioClip[] fxDeath;
+
+    public override void Init()
+    {
+        base.Init();
+    }
+
+    void Start() {
+        changeSong("mainMenu");
+    }
 
     public void changeSong(string sceneName)
     {

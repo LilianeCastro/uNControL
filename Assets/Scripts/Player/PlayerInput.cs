@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    private GameController _GameController;
     private Player _Player;
 
     private float dirX;
@@ -13,7 +12,6 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
         _Player = GetComponent<Player>();
     }
 
@@ -33,14 +31,14 @@ public class PlayerInput : MonoBehaviour
             _Player.Move(Vector2.zero);
         }
 
-        if(Input.GetKeyUp(_GameController.keyToUseToChangeSide()))
+        if(Input.GetKeyUp(GameController.Instance.keyToUseToChangeSide()))
         {
             changeControl();
         }
 
         if(Input.GetButtonDown("Fire1") && _Player.control)
         {
-            _GameController.setFx(0);
+            GameController.Instance.setFx(0);
             _Player.shot();
         }
     }

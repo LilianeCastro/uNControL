@@ -5,7 +5,6 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    private GameController _GameController;
     private Rigidbody2D playerRb;
     private Animator playerAnim;
 
@@ -28,20 +27,16 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        _GameController = FindObjectOfType(typeof(GameController)) as GameController;
 
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
 
         speedShot = 5f;
-
-        _GameController.playerIsCreated();
     }
 
     public void destroyedTheEnemyCalled(string enemyTag)
     {
-        GameController.instance.setTotalTextInCanvas(enemyTag);
-        //_GameController.setTotalTextInCanvas(enemyTag);
+        GameController.Instance.setTotalTextInCanvas(enemyTag);
     }
 
     public void arenaControl(bool status)
@@ -140,22 +135,32 @@ public class Player : MonoBehaviour
 
     public void shot()
     {
-        GameObject shotTemp = Instantiate(_GameController.shotPrefab, posLookAt.position, posLookAt.rotation);
+        GameObject shot = ObjectPooler.Instance.GetPooledObject();
+
+        if(shot == null)
+        {
+            return;
+        }
+
+        shot.transform.position = posLookAt.position;
+        shot.transform.rotation = posLookAt.rotation;
+        shot.SetActive(true);
+
         if(gameObject.tag=="purifier")
         {
-            shotTemp.GetComponent<SpriteRenderer>().color = Color.red;
+            shot.GetComponent<SpriteRenderer>().color = Color.red;
         }
         else
         {
-            shotTemp.GetComponent<SpriteRenderer>().color = Color.cyan;
+            shot.GetComponent<SpriteRenderer>().color = Color.cyan;
         }
         if(x == 0 && y == 0)
         {
-            shotTemp.GetComponent<Rigidbody2D>().AddForce(Vector2.up * speedShot, ForceMode2D.Impulse);
+            shot.GetComponent<Rigidbody2D>().AddForce(Vector2.up * speedShot, ForceMode2D.Impulse);
         }
         else
         {
-            shotTemp.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * speedShot, y * speedShot), ForceMode2D.Impulse);
+            shot.GetComponent<Rigidbody2D>().AddForce(new Vector2(x * speedShot, y * speedShot), ForceMode2D.Impulse);
         }
     }
 
