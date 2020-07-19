@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2261983518003125405}
   - component: {fileID: 1035533032528592605}
   m_Layer: 0
-  m_Name: shadown
+  m_Name: Shadown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 7706281351815023908}
   - component: {fileID: 7706281351815023913}
   - component: {fileID: 7735415054272019819}
+  - component: {fileID: 5548476831403380179}
   m_Layer: 0
   m_Name: Purifier
   m_TagString: purifier
@@ -196,3 +197,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.015058385}
   m_Size: {x: 0.21558177, y: 0.16653565}
   m_Direction: 1
+--- !u!95 &5548476831403380179
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7706281351815023912}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0c6f35f86817754792cfc91b330414e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

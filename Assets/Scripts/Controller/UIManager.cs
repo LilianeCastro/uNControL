@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class UIManager : MonoSingleton<UIManager>
 {
@@ -63,8 +64,10 @@ public class UIManager : MonoSingleton<UIManager>
 
     public void Quit()
     {
-        if (UnityEditor.EditorApplication.isPlaying)
-            UnityEditor.EditorApplication.ExitPlaymode();
+        /*if (EditorApplication.isPlaying)
+        {
+            EditorApplication.ExitPlaymode();
+        }*/
 
         Application.Quit();
     }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Player _Player;
+    private Animator enemyAnim;
+    private SpriteRenderer enemyRend;
 
     public string nameGameObjectPlayerToFollow;
     public string tagToCompare;
@@ -14,6 +16,9 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _Player = GameObject.Find(nameGameObjectPlayerToFollow).GetComponent<Player>();
+
+        enemyAnim = GetComponent<Animator>();
+        enemyRend = GetComponent<SpriteRenderer>();
 
         if(this.tag=="purifier")
         {
@@ -44,8 +49,19 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("shot"))
         {
             GameController.Instance.setDeathFx();
+            enemyAnim.SetTrigger("death");
+
+            if(this.tag=="purifier")
+            {
+                enemyRend.color = Color.cyan;
+            }
+            else
+            {
+                enemyRend.color = Color.red;
+            }
+
             _Player.destroyedTheEnemyCalled(this.tag);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.3f);
         }
 
     }

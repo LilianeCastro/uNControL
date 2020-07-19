@@ -12,6 +12,7 @@ public class Sound : MonoSingleton<Sound>
     public override void Init()
     {
         base.Init();
+        audioSource.volume = 0.5f;
     }
 
     void Start() {

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1330264194183522181}
   - component: {fileID: 1330264194183522184}
   - component: {fileID: 6904456344117791250}
+  - component: {fileID: 2659882722913523259}
   m_Layer: 0
   m_Name: Corrupter
   m_TagString: corrupter
@@ -115,6 +116,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.015545489}
   m_Size: {x: 0.21683764, y: 0.16225757}
   m_Direction: 1
+--- !u!95 &2659882722913523259
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330264194183522185}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0c6f35f86817754792cfc91b330414e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2759866555608188703
 GameObject:
   m_ObjectHideFlags: 0
