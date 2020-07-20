@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
                 {
                     Menu.Instance.closeTutorial();
                 }
-                if(Input.GetKey(KeyCode.E))
+                if(Input.GetKey(KeyCode.E) && !Menu.Instance.getIsTutorial())
                 {
                     UIManager.Instance.Quit();
                 }

@@ -10,6 +10,8 @@ public class Menu : MonoSingleton <Menu>
     public GameObject gameOverPanel;
     public GameObject tutorialPanel;
 
+    private bool isTutorial;
+
     public void sceneToLoad(string nameScene)
     {
         switch(nameScene)
@@ -44,14 +46,19 @@ public class Menu : MonoSingleton <Menu>
     {
         menuPanel.SetActive(false);
         tutorialPanel.SetActive(true);
+        isTutorial = true;
     }
 
     public void closeTutorial()
     {
         menuPanel.SetActive(true);
         tutorialPanel.SetActive(false);
+        isTutorial = false;
     }
 
-
+    public bool getIsTutorial()
+    {
+        return isTutorial;
+    }
 
 }

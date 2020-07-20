@@ -51,7 +51,7 @@ public class GameController : MonoSingleton<GameController>
     public void startCoroutinesInGame()
     {
         //HUD Sound? Clear Data?
-        PlayerPrefs.SetInt("highscore", 0);
+        //PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
         textKeyCodeToChange();

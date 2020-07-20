@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        playerRb.velocity = direction * speed;
+        playerRb.velocity = direction.normalized * speed;
 
         posX = transform.position.x;
         posY = transform.position.y;
