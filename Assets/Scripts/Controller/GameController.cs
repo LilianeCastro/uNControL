@@ -51,7 +51,7 @@ public class GameController : MonoSingleton<GameController>
     public void startCoroutinesInGame()
     {
         //HUD Sound? Clear Data?
-        //PlayerPrefs.SetInt("highscore", 0);
+        PlayerPrefs.SetInt("highscore", 0);
         zeroScore();
         updateHighScore();
         textKeyCodeToChange();
@@ -177,7 +177,7 @@ public class GameController : MonoSingleton<GameController>
 
     public float getSpeedPurifier()
     {
-        return speedPurifier + (increaseSpeedEnemy * (Mathf.Floor(speedPurifier / scoreToChangeSpeed)));;
+        return speedPurifier + (increaseSpeedEnemy * (Mathf.Floor(totalPurified / scoreToChangeSpeed)));;
     }
 
     public float getSpeedCorrupter()
