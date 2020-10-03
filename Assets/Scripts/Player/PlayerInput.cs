@@ -31,7 +31,7 @@ public class PlayerInput : MonoBehaviour
             _Player.Move(Vector2.zero);
         }
 
-        if(Input.GetKeyUp(GameController.Instance.keyToUseToChangeSide()))
+        if(Input.GetKeyDown(GameController.Instance.keyToUseToChangeSide()))
         {
             changeControl();
         }

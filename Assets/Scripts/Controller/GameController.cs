@@ -213,7 +213,7 @@ public class GameController : MonoSingleton<GameController>
 
     IEnumerator unControlSide()
     {
-        float timeToChangeControl = Random.Range(3, 10);
+        float timeToChangeControl = Random.Range(5, 10);
         yield return new WaitForSeconds(timeToChangeControl);
 
         control = !control;

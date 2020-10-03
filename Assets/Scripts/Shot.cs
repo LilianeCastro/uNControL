@@ -17,8 +17,8 @@ public class Shot : MonoBehaviour
         CancelInvoke();
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if(other.CompareTag("bound"))
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("bound") || other.CompareTag("purifier") || other.CompareTag("corrupter"))
         {
             Destroy();
         }
