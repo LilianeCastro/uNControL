@@ -4,7 +4,6 @@
 
 ## [Play on Itch.io](https://lilianecastro.itch.io/uncontrol)
 
-Version to be updated in Itch.io when game jam GMTK ends
 
 ## Description
 
